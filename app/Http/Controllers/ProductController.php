@@ -8,9 +8,20 @@ use App\Models\ProductModel;
 class ProductController extends Controller
 {
     //
-     public function index(){
-        $products=ProductModel::all();
-        return view('admin.products.index',compact('products'));
+     public function index(Request $request){
+       // $products=ProductModel::all();
+        //$products=ProductModel::paginate(5);
+
+         $search = $request->input('search');
+            $products = ProductModel::when($search, function ($query, $search) {
+                return $query->where('productname', 'like', "%{$search}%")
+                            ->orWhere('description', 'like', "%{$search}%")
+                            ->orWhere('mrp','like',"%{$search}%");
+            })->paginate(5);
+
+            // Append search query to pagination links
+            $products->appends(['search' => $search]);
+         return view('admin.products.index',compact('products','search'));
     }
     public function productAdd(){
         return view('admin.products.productAdd');
@@ -21,7 +32,6 @@ class ProductController extends Controller
         $validated=$request->validate(
             [
                 'productname'=>'required',
-                
                 'description'=>'required',
                 'mrp'=>'required',
                 'price'=>'required',
