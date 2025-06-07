@@ -14,21 +14,9 @@
         </nav>
 
         <div class="container mt-5">
-           <div class="row">
-                <h5><i class="bi bi-plus-square-fill"></i> Add New Product</h5>
-                <hr />
-            </div>
+          
             <!-- breadcrumb -->
-            <div class="breadcrumb-wrapper" style="width: fit-content;">
-                <nav class="my-3 ">
-                <ol class="breadcrumb mb-1">
-                    <li class="breadcrumb-item">Home</li>
-                    <li class="breadcrumb-item">Signup</li>
-                    <li class="breadcrumb-item active"><a href="#">login</a></li>
-                </ol>
-            </nav>
-            <hr/>
-            </div>
+           
             @yield('main')
 
              </div>

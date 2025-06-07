@@ -10,7 +10,14 @@
                     New Product</a>
                 </div> 
                 <div class="col-md-12 table-responsive mt-3">
-                    <table class="table table-bordered">
+                    <div class="d-flex justify-content-end">
+                        <form method="GET" action="{{ route('products.index') }}" class="row mb-3">
+                            
+                                <input type="text" name="search" class="form-control" placeholder="Search product..." value="{{ $search ?? '' }}">
+                        </form>
+                    </div>
+                        
+                        <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>S.NO</th>
@@ -24,7 +31,7 @@
                         <tbody>
                             @foreach ($products as $index=>$product)
                             <tr>
-                                <td>{{$index+1}}.</td>
+                                <td>{{ ($products->currentPage() - 1) * $products->perPage() + $index + 1 }}.</td>
                                 <td><img src="{{ asset('images/' . $product->image) }}" width="60" height="60"></td>
                                 <td>{{$product->productname}}</td>
                                 <td>Rs.{{$product->mrp}}/-</td>
@@ -35,15 +42,20 @@
                             </tr>
                              @endforeach
                         </tbody>
-
+                       
                     </table>
                 </div> 
+
+                  <!-- Pagination links -->
+            <div class="mt-0 d-flex justify-content-end">
+                {{$products->links('pagination::bootstrap-5')}}
+            </div>
+            
            </div>
            
-
-
+            
+       
        
 
            @endsection
-
 
