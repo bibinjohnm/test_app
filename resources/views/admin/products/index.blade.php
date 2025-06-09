@@ -11,13 +11,37 @@
                 </div> 
                 <div class="col-md-12 table-responsive mt-3">
                     <div class="d-flex justify-content-end">
-                        <form method="GET" action="{{ route('products.index') }}" class="row mb-3">
-                            
-                                <input type="text" name="search" class="form-control" placeholder="Search product..." value="{{ $search ?? '' }}">
+                        <form method="GET" action="{{ route('products.index') }}" class="row mb-4 g-2">
+
+                                <!-- Search -->
+                                <div class="col-md-3">
+                                    <input type="text" name="search" class="form-control" placeholder="Search product..." value="{{ $search ?? '' }}">
+                                </div>
+
+                                <!-- Price Range -->
+                                <div class="col-md-2">
+                                    <input type="number" name="price_min" class="form-control" placeholder="Min Price" value="{{ $price_min ?? '' }}">
+                                </div>
+                                <div class="col-md-2">
+                                    <input type="number" name="price_max" class="form-control" placeholder="Max Price" value="{{ $price_max ?? '' }}">
+                                </div>
+
+                                <!-- Date Range -->
+                                <div class="col-md-2">
+                                    <input type="date" name="date_from" class="form-control" value="{{ $date_from ?? '' }}">
+                                </div>
+                                <div class="col-md-2">
+                                    <input type="date" name="date_to" class="form-control" value="{{ $date_to ?? '' }}">
+                                </div>
+
+                                <!-- Buttons -->
+                                <div class="col-md-1 d-grid">
+                                    <button type="submit" class="btn btn-primary">Filter</button>
+                                </div>
                         </form>
                     </div>
-                        
-                        <table class="table table-bordered">
+
+                    <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>S.NO</th>
@@ -47,7 +71,7 @@
                 </div> 
 
                   <!-- Pagination links -->
-            <div class="mt-0 d-flex justify-content-end">
+            <div class="mt-0 ">
                 {{$products->links('pagination::bootstrap-5')}}
             </div>
             
