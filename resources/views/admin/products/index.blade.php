@@ -2,8 +2,8 @@
 @extends('layouts.app')
 @section('main')
         
-        
-           <div class="row">
+    
+        <div class="row">
                 <div class="d-flex justify-content-between">
                     <h5><i class="bi bi-bag-check-fill"></i>Product Details</h5>
                     <a href="productAdd" class="btn btn-primary"><i class="bi bi-plus-circle"></i>
@@ -60,7 +60,7 @@
                                 <td>{{$product->productname}}</td>
                                 <td>Rs.{{$product->mrp}}/-</td>
                                 <td>Rs.{{$product->price}}/-</td>
-                                <td><a href="productAdd" class="btn btn-dark"><i class="bi bi-pencil-square"></i></a>
+                                <td><a href="{{route('products.edit',$product->id)}}" class="btn btn-dark"><i class="bi bi-pencil-square"></i></a>
                                     <a href="#" class="btn btn-danger"><i class="bi bi-trash"></i></a>
                                 </td>
                             </tr>
@@ -75,7 +75,7 @@
                 {{$products->links('pagination::bootstrap-5')}}
             </div>
             
-           </div>
+        </div>
            
             
        

@@ -18,3 +18,8 @@ Route::get('admin/products/index',[ProductController::class,'index'])->name('pro
 Route::get('admin/products/productAdd',[ProductController::class,'productAdd']);
 
 Route::Post('admin/products/store',[ProductController::class,'store'])->name('products.store');
+
+Route::get('admin/products/updateProduct/{id}',[ProductController::class,'edit'])->name('products.edit');
+Route::PUT('admin/products/update/{id}',[ProductController::class,'update'])->name('products.update');
+
+Route::get('listproduct',[ProductController::class,'listproduct']);
